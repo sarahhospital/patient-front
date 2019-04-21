@@ -1,12 +1,12 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: frontend
+  name: patient-front
 spec:
   template:
     metadata:
       labels:
-        app: frontend
+        app: patientfront
     spec:
       containers:
         - name: front
@@ -18,12 +18,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend
+  name: patient-front
 spec:
   type: NodePort
   ports:
-    - nodePort: 31311
+    - nodePort: 31666
       port: 80
       protocol: TCP
   selector:
-    app: frontend
+    app: patientfront
