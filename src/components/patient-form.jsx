@@ -52,7 +52,17 @@ export default class PatientForm extends Component {
     }
 
     addPatient() {
-        this.props.addPatient(this.state);
+        this.props.addPatient({
+            humanNames: [
+                {
+                    family: this.state.lastName,
+                    given: this.state.firstName,
+                    patronymic: this.state.middleName
+                }
+            ],
+            gender: this.state.gender,
+            birthDate: this.state.birthDate
+        });
     }
 
     changeLastName(event) {

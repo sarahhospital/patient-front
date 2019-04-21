@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        patientService.getPatientsList();
+        patientService.getPatientsList(this.setPatientList);
     }
 
     setPatientList(patientList) {

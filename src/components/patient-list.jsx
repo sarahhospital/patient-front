@@ -20,12 +20,12 @@ export default class PatientList extends Component {
                     </thead>
                     <tbody>
                     {
-                        this.props.patientList.map(patient => <tr key={patient.id}>
-                            <td>{patient.id}</td>
-                            <td>{patient.name}</td>
-                            <td>{patient.name}</td>
-                            <td>{patient.name}</td>
-                            <td>{patient.name}</td>
+                        this.props.patientList.map(patient => <tr key={patient.identifiers[0].value}>
+                            <td>{patient.humanNames[0].family}</td>
+                            <td>{patient.humanNames[0].given}</td>
+                            <td>{patient.humanNames[0].patronymic}</td>
+                            <td>{patient.gender}</td>
+                            <td>{patient.birthDate}</td>
                         </tr>)
                     }
                     </tbody>
