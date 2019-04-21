@@ -8,22 +8,14 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            patientList: [
-                {
-                    id: 1,
-                    name: "Michael Brunmaier"
-                }, {
-                    id: 2,
-                    name: "Roman Gorbatenko"
-                }
-            ],
+            patientList: [],
             page: "list"
         };
         this.createPatient = this.createPatient.bind(this);
         this.addPatient = this.addPatient.bind(this);
         this.showList = this.showList.bind(this);
+        this.setPatientList = this.setPatientList.bind(this);
     }
-
 
     render() {
         return (
@@ -35,6 +27,14 @@ class App extends Component {
                 }
             </div>
         );
+    }
+
+    componentDidMount() {
+        patientService.getPatientsList();
+    }
+
+    setPatientList(patientList) {
+        this.setState(Object.assign({}, this.state, {patientList: patientList}));
     }
 
     addPatient() {

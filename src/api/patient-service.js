@@ -1,7 +1,21 @@
 class PatientService {
 
+    getPatientsList(patientListProcessor) {
+        const request = new XMLHttpRequest();
+        request.onreadystatechange = () => {
+            if (request.readyState == 4) {
+                if (request.status >= 200 && request.status < 300) {
+                    patientListProcessor(JSON.parse(request.responseText));
+                } else {
+                    console.log(`Request has failed with code ${request.status}`);
+                }
+            }
+        };
+        request.open("GET", "/patient", true);
+        request.send();
+    }
+
     createPatient(patient) {
-        console.log("Service!!!")
         const request = new XMLHttpRequest();
         request.onreadystatechange = () => {
             if (request.readyState == 4) {
