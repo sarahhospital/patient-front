@@ -15,6 +15,8 @@ class App extends Component {
         this.addPatient = this.addPatient.bind(this);
         this.showList = this.showList.bind(this);
         this.setPatientList = this.setPatientList.bind(this);
+        this.patientCreated = this.patientCreated.bind(this);
+        this.patientCreationFailed = this.patientCreationFailed.bind(this);
     }
 
     render() {
@@ -22,8 +24,8 @@ class App extends Component {
             <div>
                 {
                     this.state.page === "list" ?
-                        <PatientList patientList={this.state.patientList} createPatient={this.addPatient} /> :
-                        <PatientForm addPatient={this.createPatient} showList={this.showList} />
+                        <PatientList patientList={this.state.patientList} addPatient={this.addPatient} /> :
+                        <PatientForm createPatient={this.createPatient} showList={this.showList} />
                 }
             </div>
         );
@@ -42,8 +44,16 @@ class App extends Component {
     }
 
     createPatient(patient) {
-        patientService.createPatient(patient);
+        patientService.createPatient(patient, this.patientCreated, this.patientCreationFailed);
+    }
+
+    patientCreated() {
         this.showList();
+        patientService.getPatientsList(this.setPatientList);
+    }
+
+    patientCreationFailed() {
+        alert("Не удалось создать пациента");
     }
 
     showList() {

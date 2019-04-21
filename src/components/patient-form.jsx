@@ -10,7 +10,7 @@ export default class PatientForm extends Component {
             gender: "",
             birthDate: ""
         };
-        this.addPatient = this.addPatient.bind(this);
+        this.createPatient = this.createPatient.bind(this);
         this.changeLastName = this.changeLastName.bind(this);
         this.changeFirstName = this.changeFirstName.bind(this);
         this.changeMiddleName = this.changeMiddleName.bind(this);
@@ -25,34 +25,34 @@ export default class PatientForm extends Component {
                 <h1>Пациент</h1>
                 <form>
                     <label>Фамилия_______
-                        <input name="last-name" onChange={this.changeFirstName} />
+                        <input onChange={this.changeLastName} />
                     </label>
                     <br />
                     <label>Имя____________
-                        <input name="first-name" onChange={this.changeLastName} />
+                        <input onChange={this.changeFirstName} />
                     </label>
                     <br />
                     <label>Отчество_______
-                        <input name="middle-name" onChange={this.changeMiddleName} />
+                        <input onChange={this.changeMiddleName} />
                     </label>
                     <br />
                     <label>Пол____________
-                        <input name="gender" onChange={this.changeGender} />
+                        <input onChange={this.changeGender} />
                     </label>
                     <br />
                     <label>Дата рождения
-                        <input name="birth-date" onChange={this.changeBirthDate} />
+                        <input onChange={this.changeBirthDate} />
                     </label>
                     <br />
-                    <button onClick={this.addPatient}>Создать</button>
+                    <button onClick={this.createPatient}>Создать</button>
                 </form>
                 <button onClick={this.props.showList}>Отмена</button>
             </div>
         );
     }
 
-    addPatient() {
-        this.props.addPatient({
+    createPatient() {
+        this.props.createPatient({
             humanNames: [
                 {
                     family: this.state.lastName,

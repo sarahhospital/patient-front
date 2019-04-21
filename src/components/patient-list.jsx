@@ -6,7 +6,7 @@ export default class PatientList extends Component {
             <div>
                 <h1>Список пациентов</h1>
                 <div>
-                    <button onClick={this.props.createPatient}>Create new</button>
+                    <button onClick={this.props.addPatient}>Создать</button>
                 </div>
                 <table>
                     <thead>
