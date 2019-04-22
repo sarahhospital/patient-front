@@ -11,12 +11,12 @@ class App extends Component {
             patientList: [],
             page: "list"
         };
-        this.createPatient = this.createPatient.bind(this);
-        this.addPatient = this.addPatient.bind(this);
-        this.showList = this.showList.bind(this);
         this.setPatientList = this.setPatientList.bind(this);
+        this.addPatient = this.addPatient.bind(this);
+        this.createPatient = this.createPatient.bind(this);
         this.patientCreated = this.patientCreated.bind(this);
         this.patientCreationFailed = this.patientCreationFailed.bind(this);
+        this.showList = this.showList.bind(this);
     }
 
     render() {
@@ -24,8 +24,8 @@ class App extends Component {
             <div>
                 {
                     this.state.page === "list" ?
-                        <PatientList patientList={this.state.patientList} addPatient={this.addPatient} /> :
-                        <PatientForm createPatient={this.createPatient} showList={this.showList} />
+                        <PatientList patientList={this.state.patientList} addPatient={this.addPatient}/> :
+                        <PatientForm createPatient={this.createPatient} showList={this.showList}/>
                 }
             </div>
         );
@@ -36,11 +36,11 @@ class App extends Component {
     }
 
     setPatientList(patientList) {
-        this.setState(Object.assign({}, this.state, {patientList: patientList}));
+        this.setState({patientList: patientList});
     }
 
     addPatient() {
-        this.setState(Object.assign({}, this.state, {page: "form"}));
+        this.setState({page: "form"});
     }
 
     createPatient(patient) {
@@ -57,7 +57,7 @@ class App extends Component {
     }
 
     showList() {
-        this.setState(Object.assign({}, this.state, {page: "list"}));
+        this.setState({page: "list"});
     }
 }
 

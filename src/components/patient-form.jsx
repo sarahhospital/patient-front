@@ -23,35 +23,35 @@ export default class PatientForm extends Component {
         return (
             <div>
                 <h1>Пациент</h1>
-                <form>
+                <div>
                     <label>Фамилия_______
-                        <input onChange={this.changeLastName} />
+                        <input onChange={this.changeLastName}/>
                     </label>
-                    <br />
+                    <br/>
                     <label>Имя____________
-                        <input onChange={this.changeFirstName} />
+                        <input onChange={this.changeFirstName}/>
                     </label>
-                    <br />
+                    <br/>
                     <label>Отчество_______
-                        <input onChange={this.changeMiddleName} />
+                        <input onChange={this.changeMiddleName}/>
                     </label>
-                    <br />
+                    <br/>
                     <label>Пол____________
-                        <input onChange={this.changeGender} />
+                        <input onChange={this.changeGender}/>
                     </label>
-                    <br />
+                    <br/>
                     <label>Дата рождения
-                        <input onChange={this.changeBirthDate} />
+                        <input onChange={this.changeBirthDate}/>
                     </label>
-                    <br />
+                    <br/>
                     <button onClick={this.createPatient}>Создать</button>
-                </form>
+                </div>
                 <button onClick={this.props.showList}>Отмена</button>
             </div>
         );
     }
 
-    createPatient() {
+    createPatient(event) {
         this.props.createPatient({
             humanNames: [
                 {
@@ -66,18 +66,22 @@ export default class PatientForm extends Component {
     }
 
     changeLastName(event) {
-        this.setState(Object.assign({}, this.state, {lastName: event.target.value}))
+        this.setState({lastName: event.target.value});
     }
+
     changeFirstName(event) {
-        this.setState(Object.assign({}, this.state, {firstName: event.target.value}))
+        this.setState({firstName: event.target.value});
     }
+
     changeMiddleName(event) {
-        this.setState(Object.assign({}, this.state, {middleName: event.target.value}))
+        this.setState({middleName: event.target.value});
     }
+
     changeGender(event) {
-        this.setState(Object.assign({}, this.state, {gender: event.target.value}))
+        this.setState({gender: event.target.value});
     }
+
     changeBirthDate(event) {
-        this.setState(Object.assign({}, this.state, {birthDate: event.target.value}))
+        this.setState({birthDate: event.target.value});
     }
 }
